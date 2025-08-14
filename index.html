@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Gemini Offer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .logo img {
+            height: 40px; /* Adjust as needed */
+        }
+        h1 {
+            color: #4285F4;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #4285F4;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #357ae8;
+        }
+        #message {
+            margin-top: 20px;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo">
+        </div>
+        <h1>Google Gemini </h1>
+        <form id="studentForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        const form = document.getElementById('studentForm');
+        const message = document.getElementById('message');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone')
+            };
+
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbzA_hdWpNxLd-rmWZwzz7Rw6iShG0YgZAjAuqprvP5eIH3qAgGdZFlADDE2xyldGkuL/exec';
+
+            message.textContent = 'Submitting...';
+
+            try {
+                const response = await fetch(webAppUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // Use 'no-cors' to avoid CORS issues
+                    body: JSON.stringify(data),
+                    headers: {
+                      'Content-Type': 'application/json',
+                    }
+                });
+
+                // Since we use 'no-cors', we can't check the response directly.
+                // We assume it's successful and redirect immediately.
+                message.textContent = 'Success! Redirecting you now...';
+                window.location.href = "https://aiskillshouse.com/student/qr-mediator.html?uid=1544&promptId=6";
+
+            } catch (error) {
+                console.error('Error:', error);
+                message.textContent = 'An error occurred. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>
