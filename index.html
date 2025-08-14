@@ -32,12 +32,9 @@
 <body class="bg-gradient-to-br from-indigo-100 to-white min-h-screen flex items-center justify-center p-4">
     <!-- Main container with a modern card-like appearance -->
     <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-lg w-full text-center">
-        <!-- New Gemini-style SVG logo -->
+        <!-- Replaced the SVG with the user-provided image -->
         <div class="flex justify-center mb-6">
-            <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="35" cy="50" r="25" fill="#4285F4" opacity="0.8"/>
-                <circle cx="65" cy="50" r="25" fill="#EA4335" opacity="0.8"/>
-            </svg>
+            <img src="image.png" alt="Gemini Logo" class="h-16 w-auto" />
         </div>
         
         <h1 class="text-3xl font-bold text-gray-800 mb-4">Google Gemini Pro Offer</h1>
@@ -109,6 +106,7 @@
             } catch (error) {
                 console.error('Error:', error);
                 message.textContent = 'An error occurred. Please try again.';
+                // In a real application, you might want to show a more descriptive error or log it for debugging.
             }
         });
     </script>
