@@ -97,8 +97,7 @@
         </form>
         <p id="message"></p>
     </div>
-
-    <script>
+<script>
         const form = document.getElementById('studentForm');
         const message = document.getElementById('message');
 
@@ -112,6 +111,7 @@
                 phone: formData.get('phone')
             };
 
+            // Replace with your new Apps Script Web app URL from Step 1
             const webAppUrl = 'https://script.google.com/macros/s/AKfycbzA_hdWpNxLd-rmWZwzz7Rw6iShG0YgZAjAuqprvP5eIH3qAgGdZFlADDE2xyldGkuL/exec';
 
             message.textContent = 'Submitting...';
@@ -119,17 +119,18 @@
             try {
                 const response = await fetch(webAppUrl, {
                     method: 'POST',
-                    mode: 'no-cors', // Use 'no-cors' to avoid CORS issues
                     body: JSON.stringify(data),
                     headers: {
-                      'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     }
                 });
 
-                // Since we use 'no-cors', we can't check the response directly.
-                // We assume it's successful and redirect immediately.
-                message.textContent = 'Success! Redirecting you now...';
-                window.location.href = "https://aiskillshouse.com/student/qr-mediator.html?uid=1544&promptId=6";
+                if (response.ok) {
+                    message.textContent = 'Success! Redirecting you now...';
+                    window.location.href = "https://aiskillshouse.com/student/qr-mediator.html?uid=1544&promptId=6";
+                } else {
+                    message.textContent = 'Submission failed. Please try again.';
+                }
 
             } catch (error) {
                 console.error('Error:', error);
@@ -137,5 +138,5 @@
             }
         });
     </script>
-</body>
+   </body>
 </html>
