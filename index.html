@@ -32,9 +32,12 @@
 <body class="bg-gradient-to-br from-indigo-100 to-white min-h-screen flex items-center justify-center p-4">
     <!-- Main container with a modern card-like appearance -->
     <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl max-w-lg w-full text-center">
-        <!-- Replaced the SVG with the user-provided image -->
+        <!-- Replaced the logo with the new URL and added an onerror fallback -->
         <div class="flex justify-center mb-6">
-            <img src="image.png" alt="Gemini Logo" class="h-16 w-auto" />
+            <img src="https://ibb.co/Kx7w65PY" 
+                 alt="Gemini Logo" 
+                 class="h-16 w-auto" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/64x64/4285F4/FFFFFF?text=Logo';"/>
         </div>
         
         <h1 class="text-3xl font-bold text-gray-800 mb-4">Google Gemini Pro Offer</h1>
@@ -106,7 +109,6 @@
             } catch (error) {
                 console.error('Error:', error);
                 message.textContent = 'An error occurred. Please try again.';
-                // In a real application, you might want to show a more descriptive error or log it for debugging.
             }
         });
     </script>
